@@ -14,7 +14,8 @@ const AuthNavigation = createStackNavigator(
         Login
     }, 
     {
-        initialRouteName:"AuthHome"
+        initialRouteName:"AuthHome",
+        headerMode:"none"
     });
 
 export default createAppContainer(AuthNavigation)
