@@ -54,7 +54,7 @@ export default function App() {
     <ApolloProvider client={client}>
       <ThemeProvider theme={styles}>
         <AuthProvider isLoggedIn={isLoggedIn}>
-          <StatusBar barStyle="light-content" backgroundColor={'transparent'} translucent={true}/>
+          <StatusBar barStyle="light-content" backgroundColor={'transparent'} hidden={true} />
           <NavController />
         </AuthProvider>
       </ThemeProvider>
