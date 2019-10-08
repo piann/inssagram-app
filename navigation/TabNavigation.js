@@ -4,11 +4,32 @@ import Home from "../screens/Home";
 import Search from "../screens/Search";
 import Notifications from "../screens/Notifications";
 import Profile from "../screens/Profile";
-import {View} from "react-native";
+import {View, Text} from "react-native";
+import React from "react";
+import { TouchableOpacity } from "react-native-gesture-handler";
+import MessagesLink from "../components/MessagesLink"
 
- const TabNavigation = createBottomTabNavigator({
-  Home,
-  Search,
+const stackFactory = (initialRoute, customConfig)=> createStackNavigator(
+    {
+        InitialRoute:{
+            screen:initialRoute, navigationOptions:{...customConfig}
+        }
+    }
+); 
+
+const TabNavigation = createBottomTabNavigator({
+  Home:{
+      screen: stackFactory(Home,{
+        title:"Home!",
+        headerRight: <MessagesLink />
+      }
+    )
+  },
+  Search:{
+    screen: stackFactory(Search,{
+        title:"Search!"
+      })
+  },
   Add: {
     screen: View,
     navigationOptions: {
@@ -17,8 +38,16 @@ import {View} from "react-native";
       }
     }
   },
-  Notifications,
-  Profile
+  Notifications:{
+    screen: stackFactory(Notifications,{
+        title:"Noti!"
+      })
+  },
+  Profile:{
+    screen: stackFactory(Profile,{
+        title:"Profile!"
+      })
+  }
 });
 
  export default TabNavigation;
