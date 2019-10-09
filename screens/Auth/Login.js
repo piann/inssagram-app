@@ -17,7 +17,8 @@ import {LOG_IN} from "./AuthQueries";
  const Text = styled.Text``;
 
  export default ({navigation}) => {
-    const emailInput = useInput("");
+    const defaultEmail = navigation.getParam("email","");
+    const emailInput = useInput(defaultEmail);
     const [loading, setLoading] = useState(false);
     const [requestSecretMutation] = useMutation(LOG_IN,{
         variables:{

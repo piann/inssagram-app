@@ -27,7 +27,7 @@ import { useLogIn } from "../../AuthContext";
         }
     });
     const logIn = useLogIn();
-    const handleLogin = async () => {
+    const handleConfirm = async () => {
          const {value} = secretInput;
         if(value === ""){
             return Alert.alert("Secret key can't be empty.")
@@ -59,8 +59,8 @@ import { useLogIn } from "../../AuthContext";
     return(
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View>
-        <AuthInput {...secretInput} placeholder="Secret Key" returnKeyType="send" onSubmitEditing={handleLogin}/>
-        <AuthButton loading={loading} text="Confirm" onPress={handleLogin}/>
+        <AuthInput {...secretInput} placeholder="Secret Key" returnKeyType="send" onSubmitEditing={handleConfirm}/>
+        <AuthButton loading={loading} text="Confirm" onPress={handleConfirm}/>
         </View>
     </TouchableWithoutFeedback>
     )
