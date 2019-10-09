@@ -35,11 +35,11 @@ import {LOG_IN} from "./AuthQueries";
                 const {data:{requestSecret}} = await requestSecretMutation();
                 if(requestSecret){
                     Alert.alert("Confirmation Email Send! Check ur email.")
-                    navigation.navigate("Confirm");
+                    navigation.navigate("Confirm", {email:value});
                     return;
                 } else {
                     Alert.alert("Account not found. Sign up first")
-                    navigation.navigate("Signup");
+                    navigation.navigate("Signup", {email:value});
                 }
             }catch(e){
                 console.log(e)
@@ -55,7 +55,7 @@ import {LOG_IN} from "./AuthQueries";
     return(
     <TouchableWithoutFeedback onPress={Keyboard.dismiss}>
         <View>
-        <AuthInput {...emailInput} placeholder="Email" keyboardType="email-address" returnKeyType="send"/>
+        <AuthInput {...emailInput} placeholder="Email" keyboardType="email-address" returnKeyType="send" onSubmitEditing={handleLogin}/>
         <AuthButton loading={loading} text="Log In" onPress={handleLogin}/>
         </View>
     </TouchableWithoutFeedback>
