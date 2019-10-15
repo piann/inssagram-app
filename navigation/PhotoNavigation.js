@@ -3,6 +3,7 @@ import SelectPhoto from "../screens/Photo/SelectPhoto"
 import TakePhoto from "../screens/Photo/TakePhoto"
 import UploadPhoto from "../screens/Photo/UploadPhoto"
 import { createStackNavigator } from "react-navigation-stack";
+import { stackStyles } from "./config";
 
 const PhotoTabs = createMaterialTopTabNavigator({
     SelectPhoto,
@@ -11,8 +12,11 @@ const PhotoTabs = createMaterialTopTabNavigator({
 {
     tabBarPosition:"bottom",
     headerMode:"none",
-    navigationOptions: {
-    header:null
+    defaultNavigationOptions: {
+    header:null,
+    headerStyle:{
+        ...stackStyles
+    }
     }
 }
 )

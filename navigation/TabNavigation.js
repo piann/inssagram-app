@@ -12,14 +12,18 @@ import styled from "styled-components";
 import constants from "../constants";
 import styles from "../styles";
 import NavIcon from "../components/NavIcon";
+import {stackStyles} from "./config";
 
-const stackFactory = (initialRoute, customConfig)=> createStackNavigator(
-    {
-        InitialRoute:{
-            screen:initialRoute, navigationOptions:{...customConfig}
-        }
+const stackFactory = (initialRoute, customConfig) =>
+  createStackNavigator({
+    InitialRoute: {
+      screen: initialRoute,
+      navigationOptions: {
+        headerStyle: { ...stackStyles },
+        ...customConfig
+      }
     }
-); 
+  });
 
 const TabNavigation = createBottomTabNavigator({
   Home:{
