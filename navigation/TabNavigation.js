@@ -1,9 +1,9 @@
 import { createStackNavigator} from "react-navigation-stack";
 import {createBottomTabNavigator} from "react-navigation-tabs"
-import Home from "../screens/Home";
-import Search from "../screens/Search";
-import Notifications from "../screens/Notifications";
-import Profile from "../screens/Profile";
+import Home from "../screens/Tabs/Home";
+import Search from "../screens/Tabs/Search";
+import Notifications from "../screens/Tabs/Notifications";
+import Profile from "../screens/Tabs/Profile";
 import {View, Text, Image, Platform} from "react-native";
 import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -31,7 +31,7 @@ const TabNavigation = createBottomTabNavigator({
       screen: stackFactory(Home,{
         headerRight: <MessagesLink />,
         headerLeft: <View size={25} />,
-        headerStyle: {height: 40, paddingBottom:15},
+        headerStyle: {height: 55, paddingBottom:15},
         headerTitle:(
           <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           <Image 
@@ -55,8 +55,8 @@ const TabNavigation = createBottomTabNavigator({
   },
   Search:{
     screen: stackFactory(Search,{
-        title:"Search!"
-      }),
+      headerStyle: {height: 55, paddingBottom:15, display:"flex"},
+    }),
       navigationOptions:{
         tabBarIcon:({ focused }) => (
           <NavIcon
