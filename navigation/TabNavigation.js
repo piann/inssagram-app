@@ -4,6 +4,7 @@ import Home from "../screens/Tabs/Home";
 import Search from "../screens/Tabs/Search";
 import Notifications from "../screens/Tabs/Notifications";
 import Profile from "../screens/Tabs/Profile";
+import Detail from "../screens/Detail";
 import {View, Text, Image, Platform} from "react-native";
 import React from "react";
 import { TouchableOpacity } from "react-native-gesture-handler";
@@ -14,15 +15,22 @@ import styles from "../styles";
 import NavIcon from "../components/NavIcon";
 import {stackStyles} from "./config";
 
+
 const stackFactory = (initialRoute, customConfig) =>
   createStackNavigator({
     InitialRoute: {
       screen: initialRoute,
       navigationOptions: {
-        headerStyle: { ...stackStyles },
+        
         ...customConfig
       }
-    }
+    },
+    Detail
+  },{
+    defaultNavigationOptions:{
+      headerStyle: { ...stackStyles },
+    },
+   
   });
 
 const TabNavigation = createBottomTabNavigator({
@@ -31,7 +39,6 @@ const TabNavigation = createBottomTabNavigator({
       screen: stackFactory(Home,{
         headerRight: <MessagesLink />,
         headerLeft: <View size={25} />,
-        headerStyle: {height: 55, paddingBottom:15},
         headerTitle:(
           <View style={{ flex: 1, justifyContent: 'center', alignItems: 'center' }}>
           <Image 
@@ -54,9 +61,7 @@ const TabNavigation = createBottomTabNavigator({
     }
   },
   Search:{
-    screen: stackFactory(Search,{
-      headerStyle: {height: 55, paddingBottom:15, display:"flex"},
-    }),
+    screen: stackFactory(Search),
       navigationOptions:{
         tabBarIcon:({ focused }) => (
           <NavIcon

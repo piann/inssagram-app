@@ -1,3 +1,5 @@
 export const stackStyles = {
-    backgroundColor: "#FAFAFA"
-  };
+    backgroundColor: "#FAFAFA",
+    height: 55,
+    paddingBottom:15
+};
