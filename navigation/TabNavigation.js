@@ -14,7 +14,7 @@ import constants from "../constants";
 import styles from "../styles";
 import NavIcon from "../components/NavIcon";
 import {stackStyles} from "./config";
-
+import UserDetail from "../screens/UserDetail";
 
 const stackFactory = (initialRoute, customConfig) =>
   createStackNavigator({
@@ -25,9 +25,23 @@ const stackFactory = (initialRoute, customConfig) =>
         ...customConfig
       }
     },
-    Detail
+    Detail:{
+      screen:Detail,
+      navigationOptions: {
+        headerTintColor: styles.blackColor,
+        title: "Detail Page"
+      }
+    },
+    UserDetail:{
+      screen: UserDetail,
+      navigationOptions:({navigation})=>({
+        title: navigation.getParam("userName")
+      })
+    }
   },{
     defaultNavigationOptions:{
+      headerBackTitle: null,
+      headerTintColor: styles.blackColor,
       headerStyle: { ...stackStyles },
     },
    
@@ -61,7 +75,9 @@ const TabNavigation = createBottomTabNavigator({
     }
   },
   Search:{
-    screen: stackFactory(Search),
+    screen: stackFactory(Search, {
+      headerBackTitle: null
+    }),
       navigationOptions:{
         tabBarIcon:({ focused }) => (
           <NavIcon
