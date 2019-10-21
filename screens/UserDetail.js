@@ -17,7 +17,8 @@ const GET_USER = gql`
 
 export default ({ navigation }) => {
   const { loading, data } = useQuery(GET_USER, {
-    variables: { userName: navigation.getParam("userName") }
+    variables: { userName: navigation.getParam("userName") },
+    fetchPolicy:"network-only"
   });
   return (
     <ScrollView>
